@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{27C04350-29C5-462C-9AF3-3CE739617538}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MusicOnline</RootNamespace>
+    <AssemblyName>MusicOnline</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VerifyController.cs" />
+    <Compile Include="Code\SessionConstants.cs" />
+    <Compile Include="Code\SessionHelper.cs" />
+    <Compile Include="Code\UserSession.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DiscoverController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MusicChartController.cs" />
+    <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\MVController.cs" />
+    <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\trash\AccountViewModels.cs" />
+    <Compile Include="Models\trash\IdentityModels.cs" />
+    <Compile Include="Models\trash\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\AdminContent\dist\assets\demo\chart-area-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\dist\assets\demo\chart-bar-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\dist\assets\demo\chart-pie-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\dist\assets\demo\datatables-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\dist\assets\img\error-404-monochrome.svg" />
+    <Content Include="Areas\Admin\AdminContent\dist\css\styles.css" />
+    <Content Include="Areas\Admin\AdminContent\dist\js\scripts.js" />
+    <Content Include="Areas\Admin\AdminContent\src\assets\demo\chart-area-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\src\assets\demo\chart-bar-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\src\assets\demo\chart-pie-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\src\assets\demo\datatables-demo.js" />
+    <Content Include="Areas\Admin\AdminContent\src\assets\img\error-404-monochrome.svg" />
+    <Content Include="Areas\Admin\AdminContent\src\js\scripts.js" />
+    <Content Include="Areas\Admin\AdminScripts\build-assets.js" />
+    <Content Include="Areas\Admin\AdminScripts\build-pug.js" />
+    <Content Include="Areas\Admin\AdminScripts\build-scripts.js" />
+    <Content Include="Areas\Admin\AdminScripts\build-scss.js" />
+    <Content Include="Areas\Admin\AdminScripts\clean.js" />
+    <Content Include="Areas\Admin\AdminScripts\render-assets.js" />
+    <Content Include="Areas\Admin\AdminScripts\render-pug.js" />
+    <Content Include="Areas\Admin\AdminScripts\render-scripts.js" />
+    <Content Include="Areas\Admin\AdminScripts\render-scss.js" />
+    <Content Include="Areas\Admin\AdminScripts\sb-watch.js" />
+    <Content Include="Areas\Admin\AdminScripts\start-debug.js" />
+    <Content Include="Areas\Admin\AdminScripts\start.js" />
+    <Content Include="Content\Main\css\bootstrap.min.css" />
+    <Content Include="Content\Main\css\font-awesome.min.css" />
+    <Content Include="Content\Main\css\owl.carousel.min.css" />
+    <Content Include="Content\Main\css\slicknav.min.css" />
+    <Content Include="Content\Main\css\style.css" />
+    <Content Include="Content\Main\icon-fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Main\img\artist.jpg" />
+    <Content Include="Content\Main\img\avatar.jpeg" />
+    <Content Include="Content\Main\img\blog\1.jpg" />
+    <Content Include="Content\Main\img\blog\2.jpg" />
+    <Content Include="Content\Main\img\blog\3.jpg" />
+    <Content Include="Content\Main\img\blog\Facebook-1-1.jpg" />
+    <Content Include="Content\Main\img\concept\1.jpg" />
+    <Content Include="Content\Main\img\concept\2.jpg" />
+    <Content Include="Content\Main\img\concept\3.jpg" />
+    <Content Include="Content\Main\img\concept\4.jpg" />
+    <Content Include="Content\Main\img\favicon.ico" />
+    <Content Include="Content\Main\img\hero-bg.png" />
+    <Content Include="Content\Main\img\how-to-bg.jpg" />
+    <Content Include="Content\Main\img\icons\back.png" />
+    <Content Include="Content\Main\img\icons\brain.png" />
+    <Content Include="Content\Main\img\icons\check-icon.png" />
+    <Content Include="Content\Main\img\icons\next.png" />
+    <Content Include="Content\Main\img\icons\p-1.png" />
+    <Content Include="Content\Main\img\icons\p-2.png" />
+    <Content Include="Content\Main\img\icons\p-3.png" />
+    <Content Include="Content\Main\img\icons\pause.png" />
+    <Content Include="Content\Main\img\icons\play.png" />
+    <Content Include="Content\Main\img\icons\pointer.png" />
+    <Content Include="Content\Main\img\icons\smartphone.png" />
+    <Content Include="Content\Main\img\logo.png" />
+    <Content Include="Content\Main\img\player-bg.jpg" />
+    <Content Include="Content\Main\img\playlist\1.jpg" />
+    <Content Include="Content\Main\img\playlist\10.jpg" />
+    <Content Include="Content\Main\img\playlist\11.jpg" />
+    <Content Include="Content\Main\img\playlist\12.jpg" />
+    <Content Include="Content\Main\img\playlist\13.jpg" />
+    <Content Include="Content\Main\img\playlist\14.jpg" />
+    <Content Include="Content\Main\img\playlist\15.jpg" />
+    <Content Include="Content\Main\img\playlist\2.jpg" />
+    <Content Include="Content\Main\img\playlist\3.jpg" />
+    <Content Include="Content\Main\img\playlist\4.jpg" />
+    <Content Include="Content\Main\img\playlist\5.jpg" />
+    <Content Include="Content\Main\img\playlist\6.jpg" />
+    <Content Include="Content\Main\img\playlist\7.jpg" />
+    <Content Include="Content\Main\img\playlist\8.jpg" />
+    <Content Include="Content\Main\img\playlist\9.jpg" />
+    <Content Include="Content\Main\img\playlist\AHuy.jpg" />
+    <Content Include="Content\Main\img\playlist\AnhHuy.jpg" />
+    <Content Include="Content\Main\img\playlist\BNCP.jpg" />
+    <Content Include="Content\Main\img\playlist\CCYLD.jpg" />
+    <Content Include="Content\Main\img\playlist\CND.jpg" />
+    <Content Include="Content\Main\img\playlist\CTKTVN.jpg" />
+    <Content Include="Content\Main\img\playlist\CTMEOY.jpg" />
+    <Content Include="Content\Main\img\playlist\DVN.jpg" />
+    <Content Include="Content\Main\img\playlist\LN.jpg" />
+    <Content Include="Content\Main\img\playlist\MTP.jpg" />
+    <Content Include="Content\Main\img\playlist\NNCA.jpg" />
+    <Content Include="Content\Main\img\playlist\pop.jpg" />
+    <Content Include="Content\Main\img\playlist\RAP.jpg" />
+    <Content Include="Content\Main\img\playlist\ĐEN.jpg" />
+    <Content Include="Content\Main\img\premium\1.jpg" />
+    <Content Include="Content\Main\img\premium\2.jpg" />
+    <Content Include="Content\Main\img\premium\3.jpg" />
+    <Content Include="Content\Main\img\premium\4.jpg" />
+    <Content Include="Content\Main\img\songs\1.jpg" />
+    <Content Include="Content\Main\img\songs\2.jpg" />
+    <Content Include="Content\Main\img\songs\3.jpg" />
+    <Content Include="Content\Main\img\songs\4.jpg" />
+    <Content Include="Content\Main\img\songs\5.jpg" />
+    <Content Include="Content\Main\img\songs\6.jpg" />
+    <Content Include="Content\Main\img\songs\7.jpg" />
+    <Content Include="Content\Main\img\songs\8.jpg" />
+    <Content Include="Content\Main\img\nation.png" />
+    <Content Include="Content\Main\img\nation.jpg" />
+    <Content Include="Content\Main\img\wave-thumb.jpg" />
+    <Content Include="Content\Main\Source\photo credits.txt" />
+    <Content Include="Content\music-files\24kGoldn - Mood %28Lyrics%29 ft. Iann Dior.mp3" />
+    <Content Include="Content\music-files\7Years-LukasGraham %28Lyrics%29.mp3" />
+    <Content Include="Content\music-files\Alan Walker - Tired %28Lyrics - Lyric Video%29 Wild Cards Remix, ft. Gavin James.mp3" />
+    <Content Include="Content\music-files\AllOfASuddenMyLovelyGirlOST-Krystalfx-3528929.mp3" />
+    <Content Include="Content\music-files\Allure-HyominTara-5884510.mp3" />
+    <Content Include="Content\music-files\Anki - All Alone %28Lyrics - Lyric Video%29 feat. Micah Martin.mp3" />
+    <Content Include="Content\music-files\Anywhere By Ikson - Free Vlog Music - Travel Background Music Instrumental.mp3" />
+    <Content Include="Content\music-files\Apology-iKON-6292659.mp3" />
+    <Content Include="Content\music-files\BaamJapaneseVersion-Momoland-5689815.mp3" />
+    <Content Include="Content\music-files\Bambi-BaekHyunEXO-6994980.mp3" />
+    <Content Include="Content\music-files\BanhMiKhong-DatG.mp3" />
+    <Content Include="Content\music-files\BaoGioLayChong-BichPhuong.mp3" />
+    <Content Include="Content\music-files\BBoomBBoomJapaneseVersion-Momoland-5473812_hq.mp3" />
+    <Content Include="Content\music-files\BecauseOfMe-Krystalfx_xcde.mp3" />
+    <Content Include="Content\music-files\brillion. - dreaming of bigger things.mp3" />
+    <Content Include="Content\music-files\BuaYeu-BichPhuong-5472208.mp3" />
+    <Content Include="Content\music-files\BuonKhongEm-DatG.mp3" />
+    <Content Include="Content\music-files\Bánh Mì Không - ĐạtG x DuUyên -- OFFICIAL MV.mp3" />
+    <Content Include="Content\music-files\BÍCH PHƯƠNG - Bao Giờ Lấy Chồng- [OFFICIAL M-V].mp3" />
+    <Content Include="Content\music-files\BÍCH PHƯƠNG - Bùa Yêu %28Official M-V%29.mp3" />
+    <Content Include="Content\music-files\BÍCH PHƯƠNG - Đi Đu Đưa Đi %28Official M-V%29.mp3" />
+    <Content Include="Content\music-files\Cabinet-HyominTaraJustaTee-6025809.mp3" />
+    <Content Include="Content\music-files\Celebrity-IU-6938138.mp3" />
+    <Content Include="Content\music-files\CharliePuth-Attention [Official Video].mp3" />
+    <Content Include="Content\music-files\Codeko feat. Ashton Palmer - Afterglow.mp3" />
+    <Content Include="Content\music-files\ComeBackHome-2NE1-6292350.mp3" />
+    <Content Include="Content\music-files\CoSaoGioLaiChiaXa-BichPhuong-5079070.mp3" />
+    <Content Include="Content\music-files\DABIN - Hope It Hurts %28Lyrics%29 feat. Essenger.mp3" />
+    <Content Include="Content\music-files\DannyAvila-End Of The Night %28Official Music Video%29.mp3" />
+    <Content Include="Content\music-files\DiDuDuaDi-BichPhuong-6059493.mp3" />
+    <Content Include="Content\music-files\DomDom-Jack.mp3" />
+    <Content Include="Content\music-files\DoTruong-DatG.mp3" />
+    <Content Include="Content\music-files\EdSheeran-Shape of You %28Lyrics%29.mp3" />
+    <Content Include="Content\music-files\EmMuon-BuiBichPhuong-2523376.mp3" />
+    <Content Include="Content\music-files\Fire-2NE1-6292023.mp3" />
+    <Content Include="Content\music-files\Freeze-Momoland-5129525.mp3" />
+    <Content Include="Content\music-files\FullHouse-BiRain_jqc3.mp3" />
+    <Content Include="Content\music-files\GashinaAreiaRemix-Summi-5302721.mp3" />
+    <Content Include="Content\music-files\GhostDragon - Can%27t Stop %28Lyrics%29 ft. Luma.mp3" />
+    <Content Include="Content\music-files\GianLong-DongNhi.mp3" />
+    <Content Include="Content\music-files\GoAway-2NE1-6292482.mp3" />
+    <Content Include="Content\music-files\Gone-ROSE-6964052.mp3" />
+    <Content Include="Content\music-files\GuiAnhXaNho-BichPhuong-4539289.mp3" />
+    <Content Include="Content\music-files\ChiaTay-BuiAnhTuan-5183978.mp3" />
+    <Content Include="Content\music-files\Gustixa - lemon tree.mp3" />
+    <Content Include="Content\music-files\HaruHaru-BIGBANG-6291516.mp3" />
+    <Content Include="Content\music-files\HenMotMai-BuiAnhTuan-4652623.mp3" />
+    <Content Include="Content\music-files\HeroineShaunBootleg-SunMi-5833105.mp3" />
+    <Content Include="Content\music-files\HomNayMinhCuoi-DongNhi.mp3" />
+    <Content Include="Content\music-files\HowComeTheTimeWeWereNotInLoveOst-SuzymissA-4055919.mp3" />
+    <Content Include="Content\music-files\HowYouLikeThat-BLACKPINK-6720100.mp3" />
+    <Content Include="Content\music-files\HÔM NAY MÌNH CƯỚI - ĐÔNG NHI FT ÔNG CAO THẮNG - BEST MOMENTS IN #NHITHANGWEDDING.mp3" />
+    <Content Include="Content\music-files\ICantStopMe-TWICE-6759602.mp3" />
+    <Content Include="Content\music-files\IfThatWasYou-SunMi-2974758.mp3" />
+    <Content Include="Content\music-files\Illenium - Good Things Fall Apart %28Lyrics%29 ft. Jon Bellion.mp3" />
+    <Content Include="Content\music-files\ImSoHot-Momoland-5914146.mp3" />
+    <Content Include="Content\music-files\IStillLoveYou-SuzymissA_446hh.mp3" />
+    <Content Include="Content\music-files\Jack - Đom Đóm - Official Music Video.mp3" />
+    <Content Include="Content\music-files\KhiConLaMe-DongNhi.mp3" />
+    <Content Include="Content\music-files\KickIt-BLACKPINK-6291964.mp3" />
+    <Content Include="Content\music-files\LetSNotFallInLove-BIGBANG-6292282.mp3" />
+    <Content Include="Content\music-files\Lilac-IU-6984996.mp3" />
+    <Content Include="Content\music-files\Loser-BIGBANG-6291940.mp3" />
+    <Content Include="Content\music-files\Lost in Your Eyes %28nhạc để mốt làm travel - hyperlapse %29.mp3" />
+    <Content Include="Content\music-files\Louis The Child - Little Things %28Lyrics%29 With Quinn XCII &amp; Chelsea Cutler.mp3" />
+    <Content Include="Content\music-files\LoveHurtsTheHeirsOst-LeeMinHo-2869363.mp3" />
+    <Content Include="Content\music-files\LovesickGirls-BLACKPINK-6720104.mp3" />
+    <Content Include="Content\music-files\Masked Wolf - Astronaut In The Ocean.mp3" />
+    <Content Include="Content\music-files\Maybe-Suzy_wkqm.mp3" />
+    <Content Include="Content\music-files\MissingYou-2NE1-6291876.mp3" />
+    <Content Include="Content\music-files\MoHo-BuiAnhTuan-3264100.mp3" />
+    <Content Include="Content\music-files\MotCuLua-BichPhuong.mp3" />
+    <Content Include="Content\music-files\MyEverything-LeeMinHo_akdw.mp3" />
+    <Content Include="Content\music-files\nhận một cú lừa nhưng bích phương không quá buồn như anh nghĩ đâu.mp3" />
+    <Content Include="Content\music-files\NiceBody-HyominTara-3228461.mp3" />
+    <Content Include="Content\music-files\Noah Neiman - Hard %28Lyrics%29 ft. Jadelyn.mp3" />
+    <Content Include="Content\music-files\NoiTinhYeuBatDau-BuiAnhTuan-1915267.mp3" />
+    <Content Include="Content\music-files\NoiTinhYeuKetThuc-BuiAnhTuan-2540574.mp3" />
+    <Content Include="Content\music-files\Chiecaobaba-CamLy-92057.mp3" />
+    <Content Include="Content\music-files\KeDungSauTinhYeu-CamLy_bbs.mp3" />
+    <Content Include="Content\music-files\MatNhauRoi-CamLy_3ga59.mp3" />
+    <Content Include="Content\music-files\NoiBuonHoaPhuong-CamLy_7gd.mp3" />
+    <Content Include="Content\music-files\OnTheGround-ROSE-6964051.mp3" />
+    <Content Include="Content\music-files\PiecesOfLove-LeeMinHo-2560919.mp3" />
+    <Content Include="Content\music-files\Rainism-BiRain_7b4r.mp3" />
+    <Content Include="Content\music-files\RhythmTa-iKON-6291902.mp3" />
+    <Content Include="Content\music-files\RingMyBellUncontrollablyFondOST-SuzymissA-4500690.mp3" />
+    <Content Include="Content\music-files\Said The Sky &amp; Dabin - Hero %28Lyrics%29 ft. Olivver The Kid.mp3" />
+    <Content Include="Content\music-files\sapientdream - Pastlives %28lyrics%29.mp3" />
+    <Content Include="Content\music-files\Sasha Sloan - Dancing With Your Ghost %28Lyric Video%29.mp3" />
+    <Content Include="Content\music-files\Sia-Cheap Thrills %28Lyrics%29 ft. Sean Paul.mp3" />
+    <Content Include="Content\music-files\Sketch-HyominTara-4374381.mp3" />
+    <Content Include="Content\music-files\SLANDER &amp; Said The Sky - Potions %28Lyrics%29 William Black Remix, ft. JT Roach.mp3" />
+    <Content Include="Content\music-files\SLANDER &amp; William Black - Back To U %28Lyrics%29.mp3" />
+    <Content Include="Content\music-files\Snavs - End With You %28Lyrics - Lyric Video%29 Feat. KING.mp3" />
+    <Content Include="Content\music-files\Solo-JennieBlackPink-5738971.mp3" />
+    <Content Include="Content\music-files\StayWithMe-ChanYeolEXOPunch-4939315.mp3" />
+    <Content Include="Content\music-files\StillWithYou-JungKookBTS-6289699.mp3" />
+    <Content Include="Content\music-files\Ta Là Của Nhau - Đông Nhi ft. Ông Cao Thắng - Yeah1 Superstar %28Official Music Video%29.mp3" />
+    <Content Include="Content\music-files\Tail-SunMi-6945517.mp3" />
+    <Content Include="Content\music-files\TaLaCuaNhau-DongNhi.mp3" />
+    <Content Include="Content\music-files\Tape Machines ft. Eyre - Dizzying Highs tralve cảnh flycam.mp3" />
+    <Content Include="Content\music-files\The Chainsmokers - Wake Up Alone %28Lyrics - Lyric Video%29 TELYKast Remix, feat. Jhené Aiko.mp3" />
+    <Content Include="Content\music-files\The Him - Broken Love %28Lyrics%29 feat. Parson James.mp3" />
+    <Content Include="Content\music-files\ThemBaoNhieuLau-DatG.mp3" />
+    <Content Include="Content\music-files\Thêm Bao Nhiêu Lâu - Đạt G -- OFFICIAL MV.mp3" />
+    <Content Include="Content\music-files\TiengThachSung-MinhTuyetCamLy-958845.mp3" />
+    <Content Include="Content\music-files\AnhVanYeuEmNhuNgayDauTien-CaoThaiSon-4105944.mp3" />
+    <Content Include="Content\music-files\ConDuongMua-CaoThaiSon-2452058.mp3" />
+    <Content Include="Content\music-files\DieuNgotNgaoNhat-CaoThaiSon-2449094.mp3" />
+    <Content Include="Content\music-files\GioLanh-CaoThaiSon_cm.mp3" />
+    <Content Include="Content\music-files\Walk Off the Earth - Nicknames %28Lyrics%29 feat. gnash.mp3" />
+    <Content Include="Content\music-files\WhyDoILoveYouAgain-BiRain_v2h.mp3" />
+    <Content Include="Content\music-files\WhyWhyWhy-iKON-6953352.mp3" />
+    <Content Include="Content\music-files\William Black - Deep Blue %28Lyrics%29 ft. Monika Santucci.mp3" />
+    <Content Include="Content\music-files\With Løve - So Long %28Lyrics%29 ft. Hvnnibvl.mp3" />
+    <Content Include="Content\music-files\XIN - Nhóm Nhạc ... %28Đạt G, B Ray, Masew%29 - OFFICIAL MV.mp3" />
+    <Content Include="Content\music-files\Xin-DatG.mp3" />
+    <Content Include="Content\music-files\Xoa-DongNhi.mp3" />
+    <Content Include="Content\music-files\Young Bombs - Don%27t Let Them %28Lyrics%29.mp3" />
+    <Content Include="Content\music-files\[HD] GIẬN LÒNG - ĐÔNG NHI.mp3" />
+    <Content Include="Content\music-files\[HD] XÓA - ĐÔNG NHI %28Official%29.mp3" />
+    <Content Include="Content\music-files\[Vietsub + Lyrics] I Love You 3000 - Stephanie Poetri.mp3" />
+    <Content Include="Content\music-files\ĐÔ TRƯỞNG - ĐẠT G - OFFICIAL MV.mp3" />
+    <Content Include="Content\music-files\ĐÔNG NHI - KHI CON LÀ MẸ - OFFICIAL MUSIC VIDEO.mp3" />
+    <Content Include="Content\music-files\Đạt G - Buồn Không Em - Masew.mp3" />
+    <Content Include="Content\music-imgs\Artist\24kGoldn.jpg" />
+    <Content Include="Content\music-imgs\Artist\2NE1.jpg" />
+    <Content Include="Content\music-imgs\Artist\adele.jpg" />
+    <Content Include="Content\music-imgs\Artist\AlanWalker.jpg" />
+    <Content Include="Content\music-imgs\Artist\Avicii.jpg" />
+    <Content Include="Content\music-imgs\Artist\Baekhuyn.jpg" />
+    <Content Include="Content\music-imgs\Artist\bich-phuong.jpg" />
+    <Content Include="Content\music-imgs\Artist\BigBang.jpg" />
+    <Content Include="Content\music-imgs\Artist\binz.jpg" />
+    <Content Include="Content\music-imgs\Artist\BiRain.jpg" />
+    <Content Include="Content\music-imgs\Artist\BlackPink.jpg" />
+    <Content Include="Content\music-imgs\Artist\bui-anh-tuan.jpg" />
+    <Content Include="Content\music-imgs\Artist\cam-ly.jpg" />
+    <Content Include="Content\music-imgs\Artist\CaoThaiSon.jpg" />
+    <Content Include="Content\music-imgs\Artist\ChainSmokers.jpg" />
+    <Content Include="Content\music-imgs\Artist\ChanYeol.jpg" />
+    <Content Include="Content\music-imgs\Artist\CharliePuth.jpg" />
+    <Content Include="Content\music-imgs\Artist\DatG.jpg" />
+    <Content Include="Content\music-imgs\Artist\den-vau.jpg" />
+    <Content Include="Content\music-imgs\Artist\DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Artist\Ed sheeran.jpg" />
+    <Content Include="Content\music-imgs\Artist\Hyomin.jpg" />
+    <Content Include="Content\music-imgs\Artist\ImagineDragons.jpg" />
+    <Content Include="Content\music-imgs\Artist\jack.jpg" />
+    <Content Include="Content\music-imgs\Artist\justinBieber.jpg" />
+    <Content Include="Content\music-imgs\Artist\JustinTimberlake.jpg" />
+    <Content Include="Content\music-imgs\Artist\Karik.jpg" />
+    <Content Include="Content\music-imgs\Artist\KrystalJung.jpg" />
+    <Content Include="Content\music-imgs\Artist\LeeMinHo.jpg" />
+    <Content Include="Content\music-imgs\Artist\LouisTheChild.jpg" />
+    <Content Include="Content\music-imgs\Artist\LukasGraham.jpg" />
+    <Content Include="Content\music-imgs\Artist\MaskedWolf.jpg" />
+    <Content Include="Content\music-imgs\Artist\momoland.jpg" />
+    <Content Include="Content\music-imgs\Artist\NgoKienHuy.jpg" />
+    <Content Include="Content\music-imgs\Artist\nguyen-tran-trung-quan.jpg" />
+    <Content Include="Content\music-imgs\Artist\PhanManhQuynh.jpg" />
+    <Content Include="Content\music-imgs\Artist\Rose.jpg" />
+    <Content Include="Content\music-imgs\Artist\SashaSloan.jpg" />
+    <Content Include="Content\music-imgs\Artist\SelenaGomez.jpg" />
+    <Content Include="Content\music-imgs\Artist\Sia.jpg" />
+    <Content Include="Content\music-imgs\Artist\son-tung-mtp.jpg" />
+    <Content Include="Content\music-imgs\Artist\soobinHoangSon.jpg" />
+    <Content Include="Content\music-imgs\Artist\StephaniePoetri.jpg" />
+    <Content Include="Content\music-imgs\Artist\Sunmi.jpg" />
+    <Content Include="Content\music-imgs\Artist\Suzy.jpg" />
+    <Content Include="Content\music-imgs\Artist\TheHim.jpg" />
+    <Content Include="Content\music-imgs\Artist\IU.jpg" />
+    <Content Include="Content\music-imgs\Artist\TrinhThangBinh.jpg" />
+    <Content Include="Content\music-imgs\Artist\unknown.png" />
+    <Content Include="Content\music-imgs\Artist\WilliamBlack.jpg" />
+    <Content Include="Content\music-imgs\Artist\YoungBombs.jpg" />
+    <Content Include="Content\music-imgs\Genre\bolero.jpg" />
+    <Content Include="Content\music-imgs\Genre\edm.jpg" />
+    <Content Include="Content\music-imgs\Genre\nhac-tre.jpg" />
+    <Content Include="Content\music-imgs\Genre\pop-music.jpg" />
+    <Content Include="Content\music-imgs\Genre\rap-viet.jpg" />
+    <Content Include="Content\music-imgs\Genre\rock.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\7Year-LukasGraham.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\afterglow-ashtonpalmer.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\All Of A Sudden-krytal.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Allalone-Anki.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\allure- HYOMIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Apology-Ikon.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Astronautintheocean-MaskedWolf.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Attention-CharliePuth.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\baam-MOMOLAND.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Backtou-Slander.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\bambi-BEAKYUN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\BanhMiKhong-DatG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\BaoGioLayChong-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\bboom bboom-MOMOLAND.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Because Of Me-krytal.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\blue-BIGBANG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Brokenlove-Thehim.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\BuaYeu-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\BuonKhongEm-DatG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\cabinet-HYOMIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Can%27tstop-GhotsDragon.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\celebrity-IU.jpeg" />
+    <Content Include="Content\music-imgs\Song\mp3\CheapThrills-Sia.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\ChiaTay-BuiAnhTuan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Come Back Home- 2NE1.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\ConDuongMua_caoThaiSon.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\CoSaoHLaiChiaXa-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\DancingWithyourGhost-SashaSloan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Deepblue-WilliamBlack.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\DiDuDuaDi-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\DizzyingHighs-tapmachines.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\DomDom-Jack.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Don%27tletthem-Youngbombs.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\DoTruong-DatG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Dreamingofbiggerthings-Brillion.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Endofthenight-DannyAvila.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Endwithyou-Snavs.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Fire - 2NE1.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\freeze-MOMOLAND.png" />
+    <Content Include="Content\music-imgs\Song\mp3\FullHouse-BiRain.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\gasina-SUNMI.png" />
+    <Content Include="Content\music-imgs\Song\mp3\GianLong-DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Go Away - 2NE1.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\gone-ROSE.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Goodthingsfallapart.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Hard-NoahNeiman.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\haru haru-BIGBANG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\HenMotMai-BuiAnhTuan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Hero-Dabin.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\heronie-SUNMI.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\HomNayMinhCuoi-DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Hopeithurts-Dabin.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\howyoulikethat- BLACKPINK.png" />
+    <Content Include="Content\music-imgs\Song\mp3\i still love you-SUZY.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\i-cant-stop-me- TWICE.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\if that was you -SUNMI.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Iloveyou3000-Stephanie.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\im so hot-MOMOLAND.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\KenCaChonAnh-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\KhiConLaMe-DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\kick it-BLACKPINK.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Lemontree-Gustixa.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\LET NOT FALL IN LOVE- BIGBANG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\lilac-IU.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\LittleThings-Louisthechild.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\loser-BIGBANg.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Lostinyoureyes-Tflm.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Love Hurts- LEE MIN HO.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\lovesickgirl- BLACKPINK.jpeg" />
+    <Content Include="Content\music-imgs\Song\mp3\maybe-SUZY.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Missing You- 2NE1.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Mood-24KGOLDN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\MotCuLua-BichPhuong.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\my everything- LEE MIN HO.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Nice Body-HYOMIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Nicknames-Walkofftheearth.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\NoiTinhYeuBatDau-BuiAnhTuan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\NoiTinhYeuKetThuc-BuiAnhTuan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\on-the-ground- ROSE.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\OneTheGround-Rose.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Pastlives-Sapientdream.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Pieces Of Love- LEE MIN HO.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Potions-Slander.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Rainism - BỈAIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\RhythmTa-Ikon.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\ring my bell-SUZY.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Shapeofyou-EdSheeran.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Sketch-HYOMIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\solo-JENNIE.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Solong-Withlove.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\stay with me - CHANYOEL, PUNCH.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\still-with-you-   JUNGKOOK.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\tail-SUNMI.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\TaLaCuaNhau-DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\ThemBaoNhieuLau-DatG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Tired-AlanWalker.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\TuTam-NTTQuan.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Wakeupalone-Thechainsmokers.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\why -BI RAIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Why Am I Like This- SUZY.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Why Do I Love You Again- BI RAIN.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\why why why-ikon.png" />
+    <Content Include="Content\music-imgs\Song\mp3\WhyWhyWhy-Ikon.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Xin-DatG.jpg" />
+    <Content Include="Content\music-imgs\Song\mp3\Xoa-DongNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\ChiLaKhongCungNhau-TangPhuc_ThaoNhi.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\Chungtacuhientai.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\Danhmatem-QuangDang.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\DoTruong.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\Homnayemcuoiroi-KhaiDang.jpg" />
+    <Content Include="Content\music-imgs\Song\MV\KhoVeNuCuoi.jpg" />
+    <Content Include="Content\music-imgs\Tag\hot.jpg" />
+    <Content Include="Content\music-imgs\Tag\new.png" />
+    <Content Include="Content\music-imgs\Tag\popular.jpg" />
+    <Content Include="Content\music-imgs\Tag\trending.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\trash\bootstrap.css" />
+    <Content Include="Content\trash\bootstrap.min.css" />
+    <Content Include="Content\Login\scripts.js" />
+    <Content Include="Content\Login\styles.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\trash\Site.css" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\authentication.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\dashboard.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\error.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\footer.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\head\css.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\head\icons.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\head\meta.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\head\title.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\navigation\sidenav.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\navigation\topnav.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\layouts\includes\scripts.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\401.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\404.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\500.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\charts.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\includes\datatable.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\includes\page-header.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\index.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\layout-sidenav-light.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\layout-static.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\login.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\password.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\register.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\pug\pages\tables.pug" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\layout\_authentication.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\layout\_dashboard-default.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\layout\_dashboard-fixed.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\layout\_error.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\navigation\sidenav\_sidenav-dark.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\navigation\sidenav\_sidenav-light.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\navigation\sidenav\_sidenav.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\navigation\_nav.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\navigation\_topnav.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\styles.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\variables\_navigation.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\variables\_spacing.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\_global.scss" />
+    <Content Include="Areas\Admin\AdminContent\src\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Verify\Index.cshtml" />
+    <Content Include="Content\Main\icon-fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Main\icon-fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Main\icon-fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Main\Source\bootstrap-4.3.1-dist.zip" />
+    <Content Include="Content\Main\Source\font-awesome-4.7.0.zip" />
+    <Content Include="Content\Main\Source\jPlayer-2.9.2.zip" />
+    <Content Include="Content\Main\Source\mixitup-v3.zip" />
+    <Content Include="Content\Main\Source\sass.zip" />
+    <Content Include="Content\Main\Source\SlickNav-master.zip" />
+    <Content Include="Content\Main\Source\wavesurfer.js-master.zip" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MainJS\bootstrap.min.js" />
+    <Content Include="Scripts\MainJS\jplayerInit.js" />
+    <Content Include="Scripts\MainJS\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\MainJS\jquery.jplayer.min.js" />
+    <Content Include="Scripts\MainJS\jquery.slicknav.min.js" />
+    <Content Include="Scripts\MainJS\main.js" />
+    <Content Include="Scripts\MainJS\mixitup.min.js" />
+    <Content Include="Scripts\MainJS\my.js" />
+    <Content Include="Scripts\MainJS\owl.carousel.min.js" />
+    <Content Include="Scripts\MainJS\wavesurfer.min.js" />
+    <Content Include="Scripts\MainJS\WaveSurferInit.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Music\HotMusic.cshtml" />
+    <Content Include="Views\Shared\_Personal.cshtml" />
+    <Content Include="Views\Personal\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\MV\Index.cshtml" />
+    <Content Include="Views\MV\PlayingMV.cshtml" />
+    <Content Include="Views\Music\PlayingSong.cshtml" />
+    <Content Include="Views\Artist\Detail.cshtml" />
+    <Content Include="Views\MusicChart\Index.cshtml" />
+    <Content Include="Views\Discover\Index.cshtml" />
+    <Content Include="Views\Music\Nation.cshtml" />
+    <Content Include="Views\Music\Genre.cshtml" />
+    <Content Include="Views\Music\Tag.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Login\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{271594d5-a4e0-4cda-aeed-d0a6f2a69e42}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicOnlineDB\MusicOnlineDB.csproj">
+      <Project>{d2412e6f-53d7-433c-b4d4-fd1540eb7f38}</Project>
+      <Name>MusicOnlineDB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>36960</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:36960/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

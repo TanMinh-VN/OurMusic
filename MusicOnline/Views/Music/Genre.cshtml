@@ -1,0 +1,119 @@
+﻿@model PagedList.IPagedList<MusicOnlineDB.Self_Created.SongModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Genre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 1;
+    int accountID;
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    if (user == null)
+    {
+        accountID = -1;
+    }
+    else
+    {
+        accountID = user.AccountID;
+    }
+}
+<!-- song section -->
+<section class="category-section spad">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="category-links">
+                @*<a href="category.html">Thể loại</a>*@
+                <a href="song.html" class="active">Bài hát</a>
+            </div>
+        </div>
+    </div>
+    <section class="songs-section">
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                string ancestor = ".jp_container_" + count;
+                string fk = "jp-audio jp_container_" + count;
+                string RootUrl = "/Content/music-files/";
+                string imgUrl = item.imgUrl.Substring(2);
+                count++;
+                <div class="song-item">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="song-info-box">
+                                <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@imgUrl" alt=""></a>
+                                <div class="song-info">
+                                    <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@Html.DisplayFor(d => item.songName)</h4></a>
+                                    <a href="/Music/PlayingSong/?songID=@item.songID"><p>@Html.DisplayFor(m => item.songArtist)</p></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single_player_container">
+                                <div class="single_player">
+                                    <div class="jp-jplayer jplayer" data-ancestor="@ancestor"
+                                         data-url="@RootUrl@item.songUrl"></div>
+                                    <div class="@fk" role="application" aria-label="media player">
+                                        <div class="jp-gui jp-interface">
+
+                                            <!-- Player Controls -->
+                                            <div class="player_controls_box">
+                                                <button class="jp-prev player_button" tabindex="0"></button>
+                                                <button class="jp-play player_button" tabindex="0"></button>
+                                                <button class="jp-next player_button" tabindex="0"></button>
+                                                <button class="jp-stop player_button" tabindex="0"></button>
+                                            </div>
+                                            <!-- Progress Bar -->
+                                            <div class="player_bars">
+                                                <div class="jp-progress">
+                                                    <div class="jp-seek-bar">
+                                                        <div>
+                                                            <div class="jp-play-bar">
+                                                                <div class="jp-current-time" role="timer" aria-label="time">
+                                                                    0:00
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="jp-duration ml-auto" role="timer" aria-label="duration">
+                                                    00:00
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-no-solution">
+                                            <span>Update Required</span>
+                                            To play the media you will need to either update your browser to a recent
+                                            version or update your <a href="http://get.adobe.com/flashplayer/"
+                                                                      target="_blank">Flash plugin</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="songs-links">
+                                <button style="background-color:white;border:none;border-radius:90px" onclick="AddFavourite('@accountID','@item.songID')"><img src="~/Content/Main/img/icons/p-1.png" alt=""></button>
+                                @*<button style="background-color:white;border:none;border-radius:90px" href="/Music/DownloadFile/?ownerDir=@item.OwnerDir&mp3Name=@item.mp3Name"><img src="~/Content/Main/img/icons/p-2.png" alt=""></button>*@
+                                <button style="background-color:white;border:none;border-radius:90px" onclick="Download('@item.songUrl')"><img src="~/Content/Main/img/icons/p-2.png" alt=""></button>
+
+                                @*<button style="background-color:white;border:none;border-radius:90px" href=""><img src="~/Content/Main/img/icons/p-3.png" alt=""></button>*@
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+            <div class="site-pagination pt-5 mt-5">
+                @Html.PagedListPager(Model, page => Url.Action("Genre", new { page}))
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<!-- Songs section end -->
+
+

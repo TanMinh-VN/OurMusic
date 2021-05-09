@@ -1,0 +1,169 @@
+﻿@using MusicOnlineDB.Self_Created
+@using MusicOnlineDB.EF
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<SongModel> searchSong = ViewBag.SearchSong;
+    IEnumerable<Artist> searchArtist = ViewBag.SearchArtist;
+    IEnumerable<SongModel> searchMV = ViewBag.SearchMV;
+    int count = 1;
+    int accountID;
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    if (user == null)
+    {
+        accountID = -1;
+    }
+    else
+    {
+        accountID = user.AccountID;
+    }
+
+}
+
+<!-- search section head -->
+<div class="search-section">
+    <div class="container-fluid">
+        <div class="search-links">
+            <h4>KẾT QUẢ TÌM KIẾM |</h4>
+            <a href="category.html" class="active">tất cả</a>
+        </div>
+        @if (searchSong?.Any() ?? false)
+        {
+            <div class="search-name">
+                <p>Bài hát ></p>
+            </div>
+            <section class="songs-section">
+                <div class="container">
+                    <!-- song -->
+
+                    @foreach (var item in searchSong)
+                    {
+                        string ancestor = ".jp_container_" + count;
+                        string fk = "jp-audio jp_container_" + count;
+                        string RootUrl = "../Content/music-files/";
+                        count++;
+                        <div class="song-item">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="song-info-box">
+                                        <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                        <div class="song-info">
+                                            <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                                            <a href=""><p>@item.songArtist</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single_player_container">
+                                        <div class="single_player">
+                                            <div class="jp-jplayer jplayer" data-ancestor="@ancestor"
+                                                 data-url="@RootUrl@item.songUrl"></div>
+                                            <div class="@fk" role="application" aria-label="media player">
+                                                <div class="jp-gui jp-interface">
+
+                                                    <!-- Player Controls -->
+                                                    <div class="player_controls_box">
+                                                        <button class="jp-prev player_button" tabindex="0"></button>
+                                                        <button class="jp-play player_button" tabindex="0"></button>
+                                                        <button class="jp-next player_button" tabindex="0"></button>
+                                                        <button class="jp-stop player_button" tabindex="0"></button>
+                                                    </div>
+                                                    <!-- Progress Bar -->
+                                                    <div class="player_bars">
+                                                        <div class="jp-progress">
+                                                            <div class="jp-seek-bar">
+                                                                <div>
+                                                                    <div class="jp-play-bar">
+                                                                        <div class="jp-current-time" role="timer" aria-label="time">
+                                                                            0:00
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">
+                                                            00:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="jp-no-solution">
+                                                    <span>Update Required</span>
+                                                    To play the media you will need to either update your browser to a recent
+                                                    version or update your <a href="http://get.adobe.com/flashplayer/"
+                                                                              target="_blank">Flash plugin</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="songs-links">
+                                        <button style="background-color:white;border:none;border-radius:90px" onclick="AddFavourite('@accountID', '@item.songID')"><img src="~/Content/Main/img/icons/p-1.png" alt=""></button>
+                                        <button style="background-color:white;border:none;border-radius:90px" onclick="Download('@item.songUrl')"><img src="~/Content/Main/img/icons/p-2.png" alt=""></button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    }
+
+                </div>
+            </section>
+        }
+        @if (searchMV?.Any() ?? false)
+        {
+            <div class="search-name">
+                <p>MV ></p>
+            </div>
+        <!-- head mv -->
+            <div class="category-items">
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in searchMV)
+                        {
+                            <div class="category-item">
+                                <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/MV/PlayingMV/?id=@item.songID"><h4>@item.songName</h4></a>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        <!-- end mv -->
+        }
+
+        @if (searchArtist?.Any() ?? false)
+        {
+            <div class="search-name">
+                <p>Nghệ sĩ ></p>
+            </div>
+        <!-- head mv -->
+            <div class="category-items">
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+
+                        @foreach (var item in searchArtist)
+                        {
+                            <div class="category-item">
+                                <a href="/Artist/Detail/?artistID=@item.artistID"><img src="@item.artistImg" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/Artist/Detail/?artistID=@item.artistID"><h4>@item.artistName</h4></a>
+                                </div>
+                                <a href="/Artist/Detail/?artistID=@item.artistID" class="ci-link"><i class="fa fa-play"></i></a>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+        <!-- end mv -->
+        }
+    </div>
+</div>

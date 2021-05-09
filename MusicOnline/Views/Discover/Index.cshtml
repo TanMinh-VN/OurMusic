@@ -1,0 +1,103 @@
+﻿@using MusicOnlineDB.EF
+@using MusicOnlineDB.Self_Created
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<string> ListNation = ViewBag.ListNation;
+    IEnumerable<Genre> ListGenre = ViewBag.ListGenre;
+    IEnumerable<Tag> ListTag = ViewBag.ListTag;
+    IEnumerable<SongModel> ListWannaSong = ViewBag.ListWannaSong;
+}
+<!-- Category section -->
+	<section class="category-section spad">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="category-links">
+					<a href="category.html" class="active">Khám phá</a>
+					<!-- <a href="#">Thêm vô sau</a> -->
+				</div>
+			</div>
+			<div class="category-name">
+				<p>Có thể bạn muốn nghe</p>
+			</div>
+			<div class="category-items ">
+				<div class="row">
+					<div class="owl-carousel owl-theme">
+						
+						@foreach (var item in ListWannaSong)
+                        {
+                            <div class="category-item">
+                                <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                                </div>
+                                <a href="/Music/PlayingSong/?songID=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                            </div>
+                        }
+					</div>
+				</div>
+			</div> <br>
+			<div class="category-name">
+				<p>Quốc gia</p>
+			</div>
+			<div class="category-items">
+				<div class="row">
+					<div class="owl-carousel owl-theme">
+						@foreach (var item in ListNation)
+                        {
+                            <div class="category-item">
+                                <a href="/Music/Nation/?page=1&&pageSize=20&&nation=@item"><img src="~/Content/Main/img/nation.jpg" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/Music/Nation/?page=1&&pageSize=20&&nation=@item"><h4>@item</h4></a>
+                                </div>
+                                <a href="/Music/Nation/?page=1&&pageSize=20&&nation=@item" class="ci-link"><i class="fa fa-play"></i></a>
+                            </div>
+                        }
+
+					</div>
+				</div>
+			</div> <br>
+			<div class="category-name">
+				<p>Thể loại</p>
+			</div>
+			<div class="category-items">
+				<div class="row">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in ListGenre)
+                        {
+
+                            <div class="category-item">
+                                <a href="/Music/Genre/?page=1&&pageSize=20&&genreID=@item.genreID"><img src="@item.genreImg" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/Music/Genre/?page=1&&pageSize=20&&genreID=@item.genreID"><h4>@item.genreName</h4></a>
+                                </div>
+                                <a href="/Music/Genre/?page=1&&pageSize=20&&genreID=@item.genreID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                            </div>
+
+
+                        }
+                    </div>		
+				</div>
+			</div> <br>
+			<div class="category-name">
+				<p>HashTag</p>
+			</div>
+			<div class="category-items">
+				<div class="row">
+					<div class="owl-carousel owl-theme">
+						@foreach (var item in ListTag)
+                        {
+                            <div class="category-item">
+                                <a href="/Music/Tag/?page=1&&pageSize=20&&tagID=@item.tagID"><img src="@item.tagImg" alt=""></a>
+                                <div class="ci-text">
+                                    <a href="/Music/Tag/?page=1&&pageSize=20&&tagID=@item.tagID"><h4>#@item.tagName</h4></a>
+                                </div>
+                                <a href="/Music/Tag/?page=1&&pageSize=20&&tagID=@item.tagID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                            </div>
+                        }
+
+					</div>
+				</div>
+			</div>
+	</section>
+	<!-- Category section end -->

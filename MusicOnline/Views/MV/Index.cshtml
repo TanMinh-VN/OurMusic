@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MusicOnlineDB.Self_Created.SongModel>
+@using MusicOnlineDB.Self_Created;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<SongModel> ListUSUK = ViewBag.ListUSUK;
+    IEnumerable<SongModel> ListKpopMV = ViewBag.ListKpopMV;
+
+}
+
+<!-- Playlist section -->
+<h1 style="padding-top:170px"></h1>
+<section class="playlist-section spad">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2>MV |</h2>
+        </div>
+        <div class="container">
+            <ul class="playlist-filter controls">
+                <li class="control" data-filter="all">TẤT CẢ</li>
+                <li class="control" data-filter=".vietnam">VIỆT NAM</li>
+                <li class="control" data-filter=".us-uk">US-UK</li>
+                <li class="control" data-filter=".kpop">KPOP</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row playlist-area">
+            @foreach (var item in Model)
+            {
+                <div class="mix col-md-6 col-lg-4 col-xl-3 vietnam">
+                    <div class="category-item">
+                        <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                        <div class="ci-text">
+                            <a href="/MV/PlayingMV/?id=@item.songID"><h4>@item.songName</h4></a>
+                        </div>
+                        <a href="/MV/PlayingMV/?id=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                    </div>
+                </div>
+            }
+            @foreach (var item in ListUSUK)
+            {
+                <div class="mix col-md-6 col-lg-4 col-xl-3 us-uk">
+                    <div class="category-item">
+                        <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                        <div class="ci-text">
+                            <a href="/MV/PlayingMV/?id=@item.songID"><h4>@item.songName</h4></a>
+                        </div>
+                        <a href="/MV/PlayingMV/?id=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                    </div>
+                </div>
+            }
+            @foreach (var item in ListKpopMV)
+            {
+                <div class="mix col-md-6 col-lg-4 col-xl-3 kpop">
+                    <div class="category-item">
+                        <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                        <div class="ci-text">
+                            <a href="/MV/PlayingMV/?id=@item.songID"><h4>@item.songName</h4></a>
+                        </div>
+                        <a href="/MV/PlayingMV/?id=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>  <!--chỉnh lại link-->
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</section>
+<!-- Playlist section end -->
+

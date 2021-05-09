@@ -1,0 +1,238 @@
+﻿@using MusicOnlineDB.EF;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    IEnumerable<Artist> listArtist = ViewBag.ListArtist;
+    IEnumerable<MusicOnlineDB.Self_Created.SongModel> listSong = ViewBag.ListSong;
+}
+
+
+<!-- Hero section -->
+<section class="hero-section">
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hs-text">
+                            <h2><span>ĐỒ ÁN <br />MÔN HỌC</span></h2>
+                            <p>
+                                Môn học: Lập trình Website <br />
+                                Thành viên: <br />
+                                - Nguyễn Nhật Trường <br />
+                                - Bùi Cao Kiều Huyên <br />
+                                - Bùi Đức Tấn Minh <br /><br />
+                                Giảng viên hướng dẫn: ThS. Trần Đình Anh Huy
+                            </p>
+                            @*<a href="#" class="site-btn">Download Now</a>
+                            <a href="#" class="site-btn sb-c2">Start free trial</a>*@
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hr-img">
+                            <img src="~/Content/Main/img/hero-bg.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hs-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hs-text">
+                            <h2><span>OUR MUSIC</span></h2>
+                            <p>
+                                Chúng mình làm trang âm nhạc này vì sự sáng tạo và niềm đam mê âm nhạc của chúng mình. 
+                                Mong trang âm nhạc này sẽ giúp cho các bạn khi truy cập vào có thể lắng nghe cũng như tải những bài hát mà mình yêu thích. 
+                                Cùng đắm chìm vào không gian âm nhạc riêng của Music Team nhé
+                            </p>
+                            <a href="/Discover/Index" class="site-btn">Hãy thử nào</a>
+                            @*<a href="#" class="site-btn">Download Now</a>
+                            <a href="#" class="site-btn sb-c2">Start free trial</a>*@
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hr-img">
+                            <img src="~/Content/Main/img/hero-bg.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hero section end -->
+<!-- Concept section -->
+<section class="concept-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Chủ đề & <br>các nghệ sĩ</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p>
+                    Dưới đây là các nghệ sĩ cũng như bài hát tiêu biểu <br>
+                    Mời các bạn khám phá
+                </p>
+            </div>
+        </div>
+        <p class="cpt">Các nghệ sĩ</p>
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in listArtist)
+                {
+                    <div class="concept-item">
+                        <a href="/Artist/Detail/?artistID=@item.artistID"><img src="@item.artistImg" alt=""></a>
+                        <div class="ci-text">
+                            <a href="/Artist/Detail/?artistID=@item.artistID"><h4>@item.artistName</h4></a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <p class="cpt">Các bài hát nổi bật</p>
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in listSong)
+                {
+                    <div class="concept-item">
+                        <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                        <div class="ci-text">
+                            <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Concept section end -->
+@*<!-- Intro section -->
+<section class="intro-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Nghe thoải mái<br>Tải miễn phí <br>Không giới hạn</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p>
+                    Chúng mình làm trang âm nhạc này vì sự sáng tạo và niềm đam mê âm nhạc của chúng mình.
+                    Mong trang âm nhạc này sẽ giúp cho các bạn khi truy cập vào có thể lắng nghe cũng
+                    như tải những bài hát mà mình yêu thích. Cùng đắm chìm vào không gian âm nhạc riêng
+                    của Music Team nhé
+                </p>
+                <a href="#" class="site-btn">Hãy thử nào</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Intro section end -->*@
+<!-- How section -->
+<section class="how-section spad set-bg" data-setbg="~/Content/Main/img/how-to-bg.jpg">
+    <div class="container text-white">
+        <div class="section-title">
+            <h2>Hướng dẫn tải nhạc</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="~/Content/Main/img/icons/brain.png" alt="">
+                    </div>
+                    <h4>Tạo một tài khoản</h4>
+                    <p>
+                        Nhấn chuột vào "CREATE AN ACCOUNT" nằm ở góc trên cùng bên phải màn hình.
+                        Một màn hình tạo tài khoản sẽ hiển ra để các bạn có thể dễ dàng nhập thông tin cá nhân
+                        của mình
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="~/Content/Main/img/icons/pointer.png" alt="">
+                    </div>
+                    <h4>Chọn nhạc</h4>
+                    <p>
+                        Truy cập vào mục "KHÁM PHÁ" trên thanh danh mục.
+                        Ở đây các bạn có thể tìm kiếm các thể loại âm nhạc hay ca sĩ
+                        mà mình yêu thích
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="~/Content/Main/img/icons/smartphone.png" alt="">
+                    </div>
+                    <h4>Tải nhạc</h4>
+                    <p>
+                        Bấm chọn nút mũi tên tải xuống ở bất cứ bài nhạc nào các bạn thích
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- How section end -->
+
+<!-- Premium section end -->
+<section class="premium-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Music Team là nơi <br>nghe nhạc</h2>
+                </div>
+            </div>
+            <!-- <div class="col-lg-6">
+                <p>Consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                     Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="premium-item">
+                    <img src="~/Content/Main/img/premium/1.jpg" alt="">
+                    <h4>Không gián đoạn quản cáo</h4>
+                    <p>Consectetur adipiscing elit</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="premium-item">
+                    <img src="~/Content/Main/img/premium/2.jpg" alt="">
+                    <h4>Chất lượng cao</h4>
+                    <p>Ectetur adipiscing elit</p>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-sm-6">
+                <div class="premium-item">
+                    <img src="~/Content/Main/img/premium/3.jpg" alt="">
+                    <h4>Listen Offline</h4>
+                    <p>Sed do eiusmod tempor </p>
+                </div>
+            </div> -->
+            <div class="col-lg-4 col-sm-6">
+                <div class="premium-item">
+                    <img src="~/Content/Main/img/premium/4.jpg" alt="">
+                    <h4>Tải nhạc miễn phí</h4>
+                    <p>Adipiscing elit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Premium section end -->
+

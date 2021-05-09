@@ -1,0 +1,118 @@
+﻿@using MusicOnlineDB.Self_Created
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SongModel> ListVN = ViewBag.ListVN;
+    List<SongModel> ListUSUK = ViewBag.ListUSUK;
+    List<SongModel> ListKpop = ViewBag.ListKpop;
+    int countVN = 0;
+    int countUSUK = 0;
+    int countKpop = 0;
+}
+
+<!-- section bxh  -->
+<section class="section-bxh">
+    <div class="container-fluid">
+        <div class="bxh-main">
+            <div class="row">
+                <div class="title-bxh-main">
+                    <a href="#">Bảng Xếp Hạng Tháng</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 col-xl-4">
+                    <div class="item-bxh">
+                        <div class="title-item">
+                            <a href="#"><h4>VIỆT NAM</h4></a>
+                            <a href="song.html" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="items">
+                            
+                            @foreach (var item in ListVN)
+                            {
+                               
+                                countVN++;
+                                <div class="item song-info-box">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-4">
+                                            <h2>@countVN</h2>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4">
+                                            <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                        </div>
+                                        <div class="col-lg-8 col-md-4 song-info">
+                                            <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                                            <a href="#"><p>@item.songArtist</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-3 col-xl-4">
+                    <div class="item-bxh">
+                        <div class="title-item">
+                            <a href="#"><h4>US-UK</h4></a>
+                            <a href="song.html" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="items">
+                        @foreach (var item in ListUSUK)
+                        {
+
+                            countUSUK++;
+                            <div class="item song-info-box">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4">
+                                        <h2>@countUSUK</h2>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4">
+                                        <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-8 col-md-4 song-info">
+                                        <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                                        <a href="#"><p>@item.songArtist</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-3 col-xl-4">
+                    <div class="item-bxh">
+                        <div class="title-item">
+                            <a href="#"><h4>KPOP</h4></a>
+                            <a href="song.html" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="items">
+                            @foreach (var item in ListKpop)
+                            {
+
+                                countKpop++;
+                                <div class="item song-info-box">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-4">
+                                            <h2>@countKpop</h2>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4">
+                                            <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                                        </div>
+                                        <div class="col-lg-8 col-md-4 song-info">
+                                            <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                                            <a href="#"><p>@item.songArtist</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- section bxh end -->

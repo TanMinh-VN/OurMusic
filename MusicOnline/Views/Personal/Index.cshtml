@@ -1,0 +1,88 @@
+﻿@model MusicOnlineDB.Self_Created.PersonalModel
+@using MusicOnlineDB.Self_Created;
+@using MusicOnlineDB.EF;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    PersonalModel personal = Model;
+    IEnumerable<SongModel> listMusic = personal.ListMusic;
+    IEnumerable<SongModel> listMV = personal.ListMV;
+    IEnumerable<Artist> listArtist = personal.ListArtist;
+
+}
+<section class="thongtin ">
+    <img src="~/Content/Main/img/blog/Facebook-1-1.jpg" class="mx-auto d-block rounded-circle " alt="Cinque Terre">
+    <h2>@user.FullName </h2>
+</section>
+<!-- Header section end -->
+<!-- Playlist section -->
+<section class="playlist-section spad">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2>Cá nhân | </h2>
+        </div>
+        <div class="container">
+            <ul class="playlist-filter controls">
+                <li class="control" data-filter="all">TẤT CẢ</li>
+                <li class="control" data-filter=".song">Bài hát</li>
+                <li class="control" data-filter=".artist">Nghệ sĩ</li>
+                <li class="control" data-filter=".mv">MV</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row playlist-area">
+            @if (listMusic != null)
+            {
+                foreach (var item in listMusic)
+                {
+                    <div class="mix col-md-6 col-lg-4 col-xl-3 song">
+                        <div class="category-item">
+                            <a href="/Music/PlayingSong/?songID=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                            <div class="ci-text">
+                                <a href="/Music/PlayingSong/?songID=@item.songID"><h4>@item.songName</h4></a>
+                            </div>
+                            <a href="/Music/PlayingSong/?songID=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                }
+            }
+            
+            @if (listArtist != null)
+            {
+                foreach (var item in listArtist)
+                {
+                    <div class="mix col-md-6 col-lg-4 col-xl-3 artist">
+                        <div class="category-item">
+                            <a href="/Artist/Detail/?artistID=@item.artistID"><img src="@item.artistImg" alt=""></a>
+                            <div class="ci-text">
+                                <a href="/Artist/Detail/?artistID=@item.artistID"><h4>@item.artistName</h4></a>
+                            </div>
+                            <a href="/Artist/Detail/?artistID=@item.artistID" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                }
+            }
+            @if (listMV != null)
+            {
+                foreach (var item in listMV)
+                {
+                    <div class="mix col-md-6 col-lg-4 col-xl-3 mv">
+                        <div class="category-item">
+                            <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl" alt=""></a>
+                            <div class="ci-text">
+                                <a href="/MV/PlayingMV/?id=@item.songID"><h4>@item.songName</h4></a>
+                            </div>
+                            <a href="/MV/PlayingMV/?id=@item.songID" class="ci-link"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                }
+            }
+            
+            
+            
+        </div>
+    </div>
+</section>
+<!-- Playlist section end -->
+

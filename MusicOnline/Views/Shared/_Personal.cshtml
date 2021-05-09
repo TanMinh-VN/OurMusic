@@ -1,0 +1,31 @@
+﻿
+@{
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+}
+
+@if (user == null)
+{
+    <div class="header-right">
+        <a href="#" class="hr-btn">Help</a>
+        <span>|</span>
+        <div class="user-panel">
+            <a href="/login/login" class="login">Đăng nhập</a>
+            <a href="#" class="register">Tạo tài khoản</a>
+        </div>
+    </div>
+}
+else
+{
+    
+    <div class="sub">
+        <div class="header-right">
+            <li class="name"> <a href="#">@user.FullName</a></li>
+            <li>
+                <a href="#"><img src="~/Content/Main/img/avatar.jpeg" alt=""></a>
+                <ul class="sub-menu">
+                    <li><a href="/login/logout" >Đăng xuất</a></li>
+                </ul>
+            </li>
+        </div>
+    </div>
+}

@@ -1,0 +1,116 @@
+﻿@model MusicOnlineDB.EF.Artist
+@using MusicOnlineDB.Self_Created
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string imgUrl = Model.artistImg.Substring(2);
+    IEnumerable<SongModel> listSong = ViewBag.ListArtistSong;
+    int count = 1;
+    int accountID;
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    if (user == null)
+    {
+        accountID = -1;
+    }
+    else
+    {
+        accountID = user.AccountID;
+    }
+}
+
+<!-- Songs details section -->
+<section class="songs-details-section">
+    <div class="container-fluid">
+        <div id="frame" class="row justify-content-center " style="padding-top:10% ;">
+
+            <div class="col-lg-10 " style="font-size: 18px;">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="artist-details">
+                            <img src="@imgUrl" alt="">
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="song-details-box">
+                            <h3>Nghệ sĩ</h3>
+                            <div class="artist-details">
+
+                                <div class="ad-text">
+                                    <h5>@Model.artistName</h5>
+                                    <span>Ca Sĩ</span>
+                                    <p>Sinh ngày: @Model.date</p>
+                                    <p>Quốc gia: @Model.nation</p>
+                                    <p>@Model.about </p>
+                                </div>
+                                <button onclick="AddFavouriteArtist('@accountID','@Model.artistID')" class="site-btn">Quan tâm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Songs details section -->
+<!-- Similar Songs section -->
+<section class="similar-songs-section">
+    <div class="container-fluid">
+        <h3>Bài hát</h3>
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in listSong)
+                {
+                    string ancestor = ".jp_container_" + count;
+                    string fk = "jp-audio jp_container_" + count;
+                    string RootUrl = "/Content/music-files/";
+                    string songImg = item.imgUrl.Substring(2);
+                    count++;
+                    <div class="similar-song">
+                        <img class="ss-thumb" src="@songImg" alt="">
+                        <h4>@item.songName</h4>
+                        <p>@item.songArtist</p>
+                        <div class="single_player">
+                            <div class="jp-jplayer jplayer" data-ancestor="@ancestor" data-url="@RootUrl@item.songUrl"></div>
+                            <div class="@fk" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="ss-controls">
+                                        <div class="songs-links">
+                                            <a href=""><img src="~/Content/Main/img/icons/p-1.png" alt=""></a>
+                                            <a href=""><img src="~/Content/Main/img/icons/p-2.png" alt=""></a>
+                                        </div>
+                                        <div class="player_controls_box">
+                                            <button class="jp-prev player_button" tabindex="0"></button>
+                                            <button class="jp-play player_button" tabindex="0"></button>
+                                            <button class="jp-next player_button" tabindex="0"></button>
+                                            <button class="jp-stop player_button" tabindex="0"></button>
+                                        </div>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar"><div class="jp-current-time" role="timer" aria-label="time">0:00</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="jp-no-solution">
+                                    <span>Update Required</span>
+                                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- Similar Songs section end -->

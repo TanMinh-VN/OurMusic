@@ -1,0 +1,68 @@
+﻿@using MusicOnlineDB.Self_Created;
+@{
+    ViewBag.Title = "PlayingMV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<SongModel> listSimilarMV = ViewBag.ListSimilarMV;
+    int accountID;
+    var user = Session["USER_SESSION"] as MusicOnline.Code.UserSession;
+    if (user == null)
+    {
+        accountID = -1;
+    }
+    else
+    {
+        accountID = user.AccountID;
+    }
+}
+<h1 style="padding-top:170px"></h1>
+<div class="container-fluid MV">
+    <section class="section-mv">
+        <div class="row">
+            <div class="col-md-6 col-lg-8 col-xl-8">
+                <div class="item-mv">
+                    <iframe width="940" height="515" src="@ViewBag.MV.songUrl"
+                            title="YouTube video player" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+                <section class="play-mv">
+                    <div class="row">
+                        <div class="title-name">
+                            <a href=""><h4>@ViewBag.MV.songName</h4></a>
+                            <a href=""><p>@ViewBag.MV.songArtist</p></a>
+                        </div>
+                        <div class="title-icon">
+                            <button style="margin-left:-190px;background-color:white;border:none;border-radius:90px" onclick="AddFavourite('@accountID','@ViewBag.MV.songID')"><img src="~/Content/Main/img/icons/p-1.png" alt=""></button>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="list-mv">
+                    <div class="list-name">
+                        <h3>Danh sách phát</h3>
+                        <hr>
+                    </div>
+                    @foreach (var item in listSimilarMV)
+                    {
+                        <div class="list">
+                            <div class="tong-list">
+                                <div class="list-item">
+                                    <a href="/MV/PlayingMV/?id=@item.songID"><img src="@item.imgUrl.Substring(2)" alt=""></a>
+                                    <a href="playmv.html" class="ci-link"><i class="fa fa-play"></i></a>
+                                </div>
+                                <div class="ci-text">
+                                    <a href="/MV/PlayingMV/?id=@item.songID"><h5>@item.songName</h5></a>
+                                    <a href="playmv.html"><p>@item.songArtist</p></a>
+                                </div>
+                            </div>
+                        </div> <hr>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+</div>
+
